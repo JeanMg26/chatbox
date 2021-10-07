@@ -59,6 +59,20 @@
          userStatus.classList.add('text-'+e.type);
       });
 
+      // User Created
+      Echo.channel('users')
+         .listen('UserCreated', (e) => {
+            console.log(e.user.name);
+
+            const usersElements = document.getElementById('users');
+
+            let element = document.createElement('li')
+            element.innerText = e.user.name;
+            usersElements.appendChild(element);
+            
+            
+         });
+
 
 
 

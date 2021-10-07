@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\UserCreated;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -28,7 +29,9 @@ class UserController extends Controller
       $data             = $request->all();
       $data['password'] = bcrypt($request->password);
 
-      return User::create($data);
+      $user = User::create($data);
+      broadcast(new UserCreated($user));
+      return $user;
 
    }
 

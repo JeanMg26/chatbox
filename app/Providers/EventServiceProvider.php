@@ -28,6 +28,9 @@ class EventServiceProvider extends ServiceProvider
       Logout::class     => [
          BroadcastUserLogout::class
       ]
+      // UserCreated::class => [
+      //    BroadcastUserCreated::class
+      // ]
    ];
 
    /**
